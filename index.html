@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +10,74 @@
     <!-- fontaweome link -->
     <script src="https://kit.fontawesome.com/3e42976856.js" crossorigin="anonymous"></script>
     <!-- bootstrap css file -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
+
 <body>
+    <!-- header start -->
+    <header class="container text-center mt-4">
+        <h1>AI Universe Hub</h1>
+        <button class="btn btn-danger fw-semibold py-2  mt-2" id="sort-btn">Sort By Date</button>
+    </header>
+    <!-- main start -->
+    <main class="container ">
+        <section class="mt-4">
+
+            <!-- cards -->
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="card-container">
+
+
+            </div>
+
+            <!-- cards -->
+
+            <!-- see more button -->
+            <div class="my-4 text-center" id="see-more">
+                <button class="btn btn-danger fw-semibold py-2  mt-2 " id="seeMore-btn">See More</button>
+
+            </div>
+
+        </section>
+
+
+        <!-- modal start -->
+        <section>
+            <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="cardModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+            
+
+        </section>
+        <!-- modal end -->
+
+
+
+    </main>
+    <!-- main end -->
 
 
     <!-- bootstrap js file -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<!-- main js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <!-- main js -->
     <script src="main.js"></script>
 </body>
+
 </html>
