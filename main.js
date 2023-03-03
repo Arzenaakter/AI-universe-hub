@@ -19,6 +19,7 @@ const showCardData = (cards) => {
 
 
     for (let card of cards) {
+    
 
         // console.log(card)
         const div = document.createElement('div');
@@ -30,15 +31,11 @@ const showCardData = (cards) => {
           <h5 class="card-title">Features</h5>
          
           <ol>
-          <li>${card.features ? card.features[0] : " "}</li>
-          <li>${card.features ? card.features[1] : " "}</li>
           
-          <li>${card.features ? card.features[2] : " "}</li>
-          <li>${card.features ? card.features[3] : " "}</li>
+          ${card.features.length ? card.features.map( featureTitle => `<li> ${featureTitle}</li>` ).join(''): "<li class='d-none'> </li>" 
+        }
          
           </ol>
-
-      
           
         </div>
         <hr>
@@ -72,14 +69,37 @@ const fetchModalDetails = (card_id) => {
 
 // modal body
 const showModalDetails = modal => {
-    console.log(modal)
+
+ 
+    
+    const inputOutput = (id) =>{
+       for(let singleinput of  modal.input_output_examples){
+         console.log(singleinput.input)
+       const showInput = document.getElementById('inputOutArea');
+       const showdiv = document.createElement('div');
+       showdiv.innerHTML =`
+       <h5>${singleinput.input}</h5>
+       `;
+
+       showInput.appendChild(showdiv);
+         
+        
+
+
+       }
+    }
+
+
+
+
     const modalCards = document.getElementById('modal-body');
     modalCards.innerHTML = `
 
     
-             <div class="  card p-3 bg-danger-subtle border border-danger" style="width: 22rem;">
-                 <div><h5>${modal.description}</h5></div>
+         <div class="  card p-3 bg-danger-subtle border border-danger" style="width: 22rem;">
+                
             <div class="card-body p-4  ">
+            <div><h5 class="">${modal.description}</h5></div>
 
             <div class =" d-flex gap-2 justify-content-center ">
                 <div class="bg-white px-2  rounded  text-center text-success fw-semibold d-flex align-items-center"><p>${modal.pricing[0]?modal.pricing[0].price + "<br>" + modal.pricing[0].plan:'Free of cost' }</p></div>
@@ -94,9 +114,11 @@ const showModalDetails = modal => {
                 <div >
                 <h5>Features</h5>
                         <ul class="px-4">
-                            <li >${modal.features[1].feature_name}</li>
-                            <li>${modal.features[2].feature_name}</li>
-                            <li>${modal.features[3].feature_name}</li>
+                        <li>${modal.features[1].feature_name}</li>
+                        <li>${modal.features[2].feature_name}</li>
+                        <li>${modal.features[3].feature_name}</li>
+
+                        
                             
                         </ul>
                 </div>
@@ -105,12 +127,11 @@ const showModalDetails = modal => {
                 <h5>Integrations</h5>
                 
                 <ul class="px-4">
-                <li >${modal.integrations[0]}</li>
-                <li >${modal.integrations[1]}</li>
-                <li >${modal.integrations[2]}</li>
-               
-                
-            </ul>
+
+                   ${modal.integrations.length ? modal.integrations.map( integration => `<li> ${integration}</li>` ).join(''): "<li>Not Data Found </li>" 
+                }
+                    
+                 </ul>
                 
                 </div>
             </div>
@@ -120,16 +141,31 @@ const showModalDetails = modal => {
             </div> 
 
 
-             <div class="  card p-3" style="width: 22rem;">
-            <img src="${modal.image_link[0]}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">oefbv</p>
+
+
+            <div class="  card p-3" style="width: 22rem;">
+                    <div>
+                    <img src="${modal.image_link[0]}" class="card-img-top position-relative" alt="...">
+                    <h5> <span class="badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2">${modal.accuracy.score? modal.accuracy.score: 'd-none'}% Accurecy</span></h5>
+
+                    </div
+            <div class="card-body mt-4">
+           
+
+            <h6 class="text-center mt-4"> ${modal.input_output_examples.length? modal.input_output_examples[0].input: 'No Not Yet text ' }</h6>
+            <p class="text-center mt-4"> ${modal.input_output_examples.length? modal.input_output_examples[0].output: 'No Not Yet text ' }</p>
+       
             </div>
             </div> 
+
+             
 
    
 
     `;
+
+
+//    console.log(modal.accuracy.score)
 }
 
 loadAllData();
