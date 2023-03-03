@@ -4,23 +4,33 @@ const loadAllData = (dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
         .then(res => res.json())
-        .then(data => showCardData(data.data.tools, dataLimit))
+        .then(data => showCardData(data.data.tools , dataLimit))
+          // start loader
+        loaderSpninner(true);
+
+          
 }
 // display card function from here
-const showCardData = (cards) => {
-    // console.log(cards)
+const showCardData = (cards , dataLimit) => {
+
+
     const cardContainer = document.getElementById('card-container');
+    cardContainer.textContent = ' ';
 
-
-    if (cards.length > 6) {
+    const seeMore = document.getElementById('see-more');
+    if ( dataLimit && cards.length > 6) {
         cards = cards.slice(0, 6);
+        
+        seeMore.classList.remove('d-none');
+    }
+    else{
+        seeMore.classList.add('d-none');
     }
 
 
 
     for (let card of cards) {
     
-
         // console.log(card)
         const div = document.createElement('div');
         div.classList.add('col');
@@ -54,6 +64,8 @@ const showCardData = (cards) => {
         cardContainer.appendChild(div);
 
     }
+    // stop loader
+    loaderSpninner(false);
 
 }
 
@@ -69,28 +81,6 @@ const fetchModalDetails = (card_id) => {
 
 // modal body
 const showModalDetails = modal => {
-
- 
-    
-    const inputOutput = (id) =>{
-       for(let singleinput of  modal.input_output_examples){
-         console.log(singleinput.input)
-       const showInput = document.getElementById('inputOutArea');
-       const showdiv = document.createElement('div');
-       showdiv.innerHTML =`
-       <h5>${singleinput.input}</h5>
-       `;
-
-       showInput.appendChild(showdiv);
-         
-        
-
-
-       }
-    }
-
-
-
 
     const modalCards = document.getElementById('modal-body');
     modalCards.innerHTML = `
@@ -136,11 +126,8 @@ const showModalDetails = modal => {
                 </div>
             </div>
 
-
             </div>
             </div> 
-
-
 
 
             <div class="  card p-3" style="width: 22rem;">
@@ -150,22 +137,34 @@ const showModalDetails = modal => {
 
                     </div
             <div class="card-body mt-4">
-           
 
-            <h6 class="text-center mt-4"> ${modal.input_output_examples.length? modal.input_output_examples[0].input: 'No Not Yet text ' }</h6>
-            <p class="text-center mt-4"> ${modal.input_output_examples.length? modal.input_output_examples[0].output: 'No Not Yet text ' }</p>
+            <h6 class="text-center mt-4"> ${modal.input_output_examples[0]? modal.input_output_examples[0].input: "No Not Yet text " }</h6>
+            <p class="text-center mt-4"> ${modal.input_output_examples[0]? modal.input_output_examples[0].output: "No Not Yet text " }</p>
        
             </div>
             </div> 
-
-             
-
-   
-
     `;
 
 
-//    console.log(modal.accuracy.score)
+}
+// spninner loding
+const loaderSpninner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+
+    }
 }
 
-loadAllData();
+
+//  button see more
+document.getElementById('seeMore-btn').addEventListener('click',function(){
+  
+    
+    loadAllData();
+
+})
+loadAllData(6);
