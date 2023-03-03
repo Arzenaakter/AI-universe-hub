@@ -5,6 +5,7 @@ const loadAllData = (dataLimit) => {
     fetch(url)
         .then(res => res.json())
         .then(data => showCardData(data.data.tools , dataLimit))
+
           // start loader
         loaderSpninner(true);
 
@@ -12,6 +13,16 @@ const loadAllData = (dataLimit) => {
 }
 // display card function from here
 const showCardData = (cards , dataLimit) => {
+
+    // document.getElementById('sort-btn').addEventListener('click',function(){
+
+    //     cards.sort= (a,b) => (a.published_in - b.published_in
+
+    //         );
+
+    // })
+    // console.log(cards)
+
 
 
     const cardContainer = document.getElementById('card-container');
@@ -31,10 +42,11 @@ const showCardData = (cards , dataLimit) => {
 
     for (let card of cards) {
     
-        // console.log(card)
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
+
+        
         <div class="card h-100 p-3">
         <img src=${card.image} class="card-img-top   " alt="...">
         <div class="card-body">
@@ -52,7 +64,7 @@ const showCardData = (cards , dataLimit) => {
         <div class=" d-flex justify-content-between align-items-center">
          <div>
          <h5>${card.name}</h5>
-         <p clas=""> ${card.published_in}</p>
+         <p clas=""> <i class="far fa-calendar-alt"></i>  ${card.published_in}</p>
          </div>
          <i class= "fas fa-arrow-right text-danger" data-bs-toggle="modal" data-bs-target="#cardModal" data-bs-toggle="modal" data-bs-target="#cardModal" onclick =" fetchModalDetails('${card.id}')"></i>
 
@@ -167,4 +179,14 @@ document.getElementById('seeMore-btn').addEventListener('click',function(){
     loadAllData();
 
 })
+
+ function sortDate(){
+    loadAllData();
+
+}
+
+
+
+
+
 loadAllData(6);
