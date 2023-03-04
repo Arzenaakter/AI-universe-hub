@@ -107,11 +107,16 @@ const showModalDetails = modal => {
             <div><h5 class="">${modal.description}</h5></div>
 
             <div class =" d-flex gap-2 justify-content-center ">
-                <div class="bg-white px-2  rounded  text-center text-success fw-semibold d-flex align-items-center"><p>${modal.pricing[0]?modal.pricing[0].price + "<br>" + modal.pricing[0].plan:'Free of cost' }</p></div>
 
-                <div class="bg-white px-2 rounded   text-center text-warning fw-semibold  d-flex align-items-center"><p>${modal.pricing[1]?modal.pricing[1].price + "<br>" + modal.pricing[1].plan:'Free of cost' }</p></div>
+               
+            <div class="bg-white px-2  rounded  text-center text-success fw-semibold d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[0].price + "<br>" + modal.pricing[0].plan:'Free of cost' }</p></div>
 
-                <div class="bg-white px-2 rounded   text-center text-danger fw-semibold d-flex align-items-center"><p>${modal.pricing[2]?modal.pricing[2].price + "<br>" + modal.pricing[2].plan:'Free of cost' }</p></div>
+            <div class="bg-white px-2 rounded   text-center text-warning fw-semibold  d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[1].price + "<br>" + modal.pricing[1].plan:'Free of cost' }</p></div>
+
+            <div class="bg-white px-2 rounded   text-center text-danger fw-semibold d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[2].price + "<br>" + modal.pricing[2].plan:'Free of cost' }</p></div>
+
+
+
             
            </div>
 
@@ -133,7 +138,7 @@ const showModalDetails = modal => {
                 
                 <ul class="px-4">
 
-                   ${modal.integrations.length ? modal.integrations.map( integration => `<li> ${integration}</li>` ).join(''): "<li>Not Data Found </li>" 
+                   ${modal.integrations !== null ? modal.integrations.map( integration => `<li> ${integration}</li>` ).join(''): " Not Data Found " 
                 }
                     
                  </ul>
@@ -153,8 +158,8 @@ const showModalDetails = modal => {
                     </div
             <div class="card-body mt-4">
 
-            <h6 class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].input:  'No Not Yet text ' }</h6>
-            <p class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].output: `No Not Yet text`  }</p>
+            <h6 class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].input:  'No! Not! take break!!'  }</h6>
+            <p class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].output: 'No! Not! take break!!'  }</p>
        
             </div>
             </div> 
