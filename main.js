@@ -38,7 +38,7 @@ const showCardData = (cards, dataLimit) => {
 
         
         <div class="card h-100 p-3">
-        <img src=${card.image} class="card-img-top   " alt="...">
+        <img src=${card.image} class="card-img-top  rounded " alt="...">
         <div class="card-body">
           <h5 class="card-title">Features</h5>
          
@@ -91,9 +91,9 @@ const showModalDetails = modal => {
     modalCards.innerHTML = `
 
     
-         <div class="  card p-sm-4 p-lg-3 bg-danger-subtle border border-danger  w-lg-25  " >
+         <div class="  card  bg-danger-subtle border border-danger  w-lg-25  "  >
                 
-            <div class="card-body p-4  ">
+            <div class="card-body mt-4 ">
             <div><h5 class="">${modal.description}</h5></div>
 
             <div class =" d-flex gap-2 justify-content-center ">
@@ -104,9 +104,6 @@ const showModalDetails = modal => {
             <div class="bg-white p-2 rounded   text-center text-warning fw-semibold  d-flex align-items-center justify-content-center"><p>${modal.pricing !== null ? modal.pricing[1].price + "<br>" + modal.pricing[1].plan : 'Free of cost'}</p></div>
 
             <div class="bg-white p-2 rounded   text-center text-danger fw-semibold d-flex align-items-center justify-content-center"><p>${modal.pricing !== null ? modal.pricing[2].price + "<br>" + modal.pricing[2].plan : 'Free of cost'}</p></div>
-
-
-
             
            </div>
 
@@ -139,13 +136,13 @@ const showModalDetails = modal => {
             </div> 
 
 
-            <div class="  card p-lg-3 p-sm-4"   w-lg-25>
-                    <div>
-                    <img src="${modal.image_link[0]}" class="card-img-top position-relative" alt="...">
+            <div class="  card  w-lg-25"   >
+                    
+                    <img src="${modal.image_link[0]}" class="card-img-top position-relative  rounded" alt="...">
                   
                     <h5 class ="${modal.accuracy.score === null ?'d-none' : 'badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2'}">${modal.accuracy.score * 100}% Accuracy</h5>
 
-                    </div
+                    
             <div class="card-body mt-4">
 
             <h6 class="text-center mt-4"> ${modal.input_output_examples !== null ? modal.input_output_examples[0].input : 'No! Not! take break!!'}</h6>
@@ -217,32 +214,32 @@ const showSortArray = (sortData) => {
             div.innerHTML = `
 
 
-<div class="card h-100 p-3">
-<img src=${data.image} class="card-img-top   " alt="...">
-<div class="card-body">
-  <h5 class="card-title">Features</h5>
+        <div class="card h-100 p-3">
+                <img src=${data.image} class="card-img-top  rounded " alt="...">
+            <div class="card-body">
+                 <h5 class="card-title">Features</h5>
  
-        <ol>
+                 <ol>
   
-       ${data.features ? data.features.map(featureTitle => `<li> ${featureTitle}</li>`).join('') : ' '
-                }
+                     ${data.features ? data.features.map(featureTitle => `<li> ${featureTitle}</li>`).join('') : ' '
+                         }
  
-         </ol>
+                     </ol>
   
-</div>
-<hr>
-<div class=" d-flex justify-content-between align-items-center">
- <div>
- <h5>${data.name}</h5>
- <p clas=""> <i class="far fa-calendar-alt"></i>  ${data.published_in}</p>
- </div>
- <i class= "fas fa-arrow-right text-danger rounded-5 bg-danger-subtle p-2" data-bs-toggle="modal" data-bs-target="#cardModal" data-bs-toggle="modal" data-bs-target="#cardModal" onclick =" fetchModalDetailssort('${data.id}')"></i>
+            </div>
+            <hr>
+            <div class=" d-flex justify-content-between align-items-center">
+                    <div>
+                     <h5>${data.name}</h5>
+                        <p clas=""> <i class="far fa-calendar-alt"></i>  ${data.published_in}</p>
+                    </div>
+            <i class= "fas fa-arrow-right text-danger rounded-5 bg-danger-subtle p-2" data-bs-toggle="modal" data-bs-target="#cardModal" data-bs-toggle="modal" data-bs-target="#cardModal" onclick =" fetchModalDetailssort('${data.id}')"></i>
 
-</div>
-</div>
+        </div>
+        </div>
 
 
-`;
+            `;
             cardContainer.appendChild(div);
 
             // .......
