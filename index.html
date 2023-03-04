@@ -19,10 +19,10 @@
     <header class="container text-center mt-4">
         <h1>AI Universe Hub</h1>
         <!-- sort bye date -->
-        <button class="btn btn-danger fw-semibold py-2  mt-2" id="sort-btn" onclick="sortDate()">Sort By Date</button>
+        <button class="btn btn-danger  fw-semibold py-2  mt-2" id="sort-btn" >Sort By Date</button>
     </header>
     <!-- main start -->
-    <main class="container ">
+    <main class="container mb-4 ">
 
         <!-- spninner start -->
         <section class="d-none" id="loader">
@@ -37,13 +37,13 @@
 
         <section class="mt-4">
 
-            <!-- cards -->
+            <!-- cards  start-->
             <div class="row row-cols-1 row-cols-md-3 g-4" id="card-container">
 
 
             </div>
 
-            <!-- cards -->
+            <!-- cards end-->
 
             <!-- see more button -->
             <div class="my-4 text-center d-none" id="see-more">
@@ -59,14 +59,17 @@
 
             <!-- Modal -->
             <div class="modal fade " id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg ">
+                <div class="modal-dialog modal-xl ">
                     <div class="modal-content ">
                         <!-- <div class="modal-header"> -->
                         <!-- <h1 class="modal-title fs-5" id="cardModalLabel">Modal title</h1> -->
-                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close p-2  bg-danger rounded-5" data-bs-dismiss="modal" aria-label="Close" ></button>
                         <!-- </div> -->
                         <div class="modal-body d-flex flex-column flex-md-row gap-lg-4 gap-4 mx-auto mb-4"
                             id="modal-body">
+                           
+
+                            </div>
 
 
                         </div>

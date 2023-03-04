@@ -1,10 +1,10 @@
 
 // All the data load from this function
-const loadAllData = (dataLimit) => {
+const loadAllData = (dataLimit ,dates) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
         .then(res => res.json())
-        .then(data => showCardData(data.data.tools , dataLimit))
+        .then(data => showCardData(data.data.tools , dataLimit,dates))
 
           // start loader
         loaderSpninner(true);
@@ -13,16 +13,6 @@ const loadAllData = (dataLimit) => {
 }
 // display card function from here
 const showCardData = (cards , dataLimit) => {
-
-    // document.getElementById('sort-btn').addEventListener('click',function(){
-
-    //     cards.sort= (a,b) => (a.published_in - b.published_in
-
-    //         );
-
-    // })
-    // console.log(cards)
-
 
 
     const cardContainer = document.getElementById('card-container');
@@ -66,7 +56,7 @@ const showCardData = (cards , dataLimit) => {
          <h5>${card.name}</h5>
          <p clas=""> <i class="far fa-calendar-alt"></i>  ${card.published_in}</p>
          </div>
-         <i class= "fas fa-arrow-right text-danger" data-bs-toggle="modal" data-bs-target="#cardModal" data-bs-toggle="modal" data-bs-target="#cardModal" onclick =" fetchModalDetails('${card.id}')"></i>
+         <i class= "fas fa-arrow-right text-danger rounded-5 bg-danger-subtle p-2" data-bs-toggle="modal" data-bs-target="#cardModal" data-bs-toggle="modal" data-bs-target="#cardModal" onclick =" fetchModalDetails('${card.id}')"></i>
 
         </div>
       </div>
@@ -93,15 +83,15 @@ const fetchModalDetails = (card_id) => {
 
 // modal body
 const showModalDetails = modal => {
-
-    console.log(modal.input_output_examples)
+    
+    // console.log(modal.input_output_examples)
 
     const modalCards = document.getElementById('modal-body');
     
      modalCards.innerHTML = `
 
     
-         <div class="  card p-3 bg-danger-subtle border border-danger" style="width: 22rem;">
+         <div class="  card p-sm-4 p-lg-3 bg-danger-subtle border border-danger  w-lg-25  " >
                 
             <div class="card-body p-4  ">
             <div><h5 class="">${modal.description}</h5></div>
@@ -109,11 +99,11 @@ const showModalDetails = modal => {
             <div class =" d-flex gap-2 justify-content-center ">
 
                
-            <div class="bg-white px-2  rounded  text-center text-success fw-semibold d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[0].price + "<br>" + modal.pricing[0].plan:'Free of cost' }</p></div>
+            <div class="bg-white p-2  rounded  text-center text-success fw-semibold d-flex align-items-center justify-content-center"><p>${modal.pricing !== null?modal.pricing[0].price + "<br>" + modal.pricing[0].plan:'Free of cost' }</p></div>
 
-            <div class="bg-white px-2 rounded   text-center text-warning fw-semibold  d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[1].price + "<br>" + modal.pricing[1].plan:'Free of cost' }</p></div>
+            <div class="bg-white p-2 rounded   text-center text-warning fw-semibold  d-flex align-items-center justify-content-center"><p>${modal.pricing !== null?modal.pricing[1].price + "<br>" + modal.pricing[1].plan:'Free of cost' }</p></div>
 
-            <div class="bg-white px-2 rounded   text-center text-danger fw-semibold d-flex align-items-center"><p>${modal.pricing !== null?modal.pricing[2].price + "<br>" + modal.pricing[2].plan:'Free of cost' }</p></div>
+            <div class="bg-white p-2 rounded   text-center text-danger fw-semibold d-flex align-items-center justify-content-center"><p>${modal.pricing !== null? modal.pricing[2].price + "<br>" + modal.pricing[2].plan:'Free of cost' }</p></div>
 
 
 
@@ -127,8 +117,7 @@ const showModalDetails = modal => {
                         <li>${modal.features[1].feature_name}</li>
                         <li>${modal.features[2].feature_name}</li>
                         <li>${modal.features[3].feature_name}</li>
-
-                        
+                    
                             
                         </ul>
                 </div>
@@ -138,7 +127,7 @@ const showModalDetails = modal => {
                 
                 <ul class="px-4">
 
-                   ${modal.integrations !== null ? modal.integrations.map( integration => `<li> ${integration}</li>` ).join(''): " Not Data Found " 
+                   ${modal.integrations !== null ? modal.integrations.map( integration => `<li> ${integration}</li>` ).join(''): " No Data Found " 
                 }
                     
                  </ul>
@@ -150,10 +139,11 @@ const showModalDetails = modal => {
             </div> 
 
 
-            <div class="  card p-3" style="width: 22rem;">
+            <div class="  card p-lg-3 p-sm-4"   w-lg-25>
                     <div>
                     <img src="${modal.image_link[0]}" class="card-img-top position-relative" alt="...">
-                    <h5> <span class="badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2">${modal.accuracy.score? modal.accuracy.score *100: 'd-none'}% Accurecy</span></h5>
+                  
+                    <h5 class ="  ${modal.accuracy === null? 'd-none':'badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2'}">${ modal.accuracy.score *100}% Accuracy</h5>
 
                     </div
             <div class="card-body mt-4">
@@ -189,13 +179,11 @@ document.getElementById('seeMore-btn').addEventListener('click',function(){
 
 })
 
- function sortDate(){
-    loadAllData();
-
-}
-
 
 
 
 
 loadAllData(6);
+
+
+// 
