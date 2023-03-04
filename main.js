@@ -94,8 +94,11 @@ const fetchModalDetails = (card_id) => {
 // modal body
 const showModalDetails = modal => {
 
+    console.log(modal.input_output_examples)
+
     const modalCards = document.getElementById('modal-body');
-    modalCards.innerHTML = `
+    
+     modalCards.innerHTML = `
 
     
          <div class="  card p-3 bg-danger-subtle border border-danger" style="width: 22rem;">
@@ -145,17 +148,18 @@ const showModalDetails = modal => {
             <div class="  card p-3" style="width: 22rem;">
                     <div>
                     <img src="${modal.image_link[0]}" class="card-img-top position-relative" alt="...">
-                    <h5> <span class="badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2">${modal.accuracy.score? modal.accuracy.score: 'd-none'}% Accurecy</span></h5>
+                    <h5> <span class="badge bg-danger position-absolute top-0 end-0 mt-4 me-4 p-2">${modal.accuracy.score? modal.accuracy.score *100: 'd-none'}% Accurecy</span></h5>
 
                     </div
             <div class="card-body mt-4">
 
-            <h6 class="text-center mt-4"> ${modal.input_output_examples[0]? modal.input_output_examples[0].input: "No Not Yet text " }</h6>
-            <p class="text-center mt-4"> ${modal.input_output_examples[0]? modal.input_output_examples[0].output: "No Not Yet text " }</p>
+            <h6 class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].input:  'No Not Yet text ' }</h6>
+            <p class="text-center mt-4"> ${modal.input_output_examples !== null? modal.input_output_examples[0].output: `No Not Yet text`  }</p>
        
             </div>
             </div> 
     `;
+ 
 
 
 }
