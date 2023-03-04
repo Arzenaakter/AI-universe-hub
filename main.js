@@ -44,7 +44,7 @@ const showCardData = (cards , dataLimit) => {
          
           <ol>
           
-          ${card.features.length ? card.features.map( featureTitle => `<li> ${featureTitle}</li>` ).join(''): "<li class='d-none'> </li>" 
+          ${card.features ? card.features.map( featureTitle => `<li> ${featureTitle}</li>` ).join(''): ' '
         }
          
           </ol>
@@ -186,4 +186,39 @@ document.getElementById('seeMore-btn').addEventListener('click',function(){
 loadAllData(6);
 
 
-// 
+// sorting
+const loadAllDataSort = () => {
+    const url = `https://openapi.programming-hero.com/api/ai/tools`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showSortArray(data.data.tools ))
+
+         
+          
+}
+const showSortArray = (sortData)=>{
+    
+
+    console.log(sortData.sort(Arraysort))
+  }
+  
+const Arraysort = (a,b) => {
+    const dateA = new Date (a.published_in );
+    const dateB = new Date( b.published_in) ;
+    if(dateA > dateB) {
+        return 1;
+    }
+    else if(dateA < dateB){
+        return -1;
+
+    }
+    else{
+        return 0;
+    }
+
+
+}
+
+
+
+loadAllDataSort();
